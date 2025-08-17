@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('testimonials', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+    Schema::create('testimonials', function (Blueprint $table) {
+        $table->id();
+        $table->string('name');
+        $table->text('message');
+        $table->enum('status', ['pending', 'approved'])->default('pending');
+        $table->timestamps();
+    });
     }
 
     /**
